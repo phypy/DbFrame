@@ -7,6 +7,7 @@ import android.util.Log
 import phy.l1.dao.annotation.DbField
 import phy.l1.dao.annotation.DbTable
 import java.lang.reflect.Field
+import java.util.*
 
 
 /**
@@ -61,7 +62,7 @@ class BaseDao<T> : IBaseDao<T> {
             }
             var type = field.type
             when (type) {
-                String::class.java -> sql.append(" text ")
+                String::class.java,Date::class.java -> sql.append(" text ")
                 Char::class.java, Int::class.java -> sql.append(" integer ")
                 Long::class.java -> sql.append(" bigint ")
                 Float::class.java, Double::class.java -> sql.append(" real ")
